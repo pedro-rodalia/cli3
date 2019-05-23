@@ -1,6 +1,7 @@
 <template lang="pug">
   #app
     template(v-if="!this.$route.path.includes('login')")
+      header-content(@hasTopBar="handleHeigth")
       div.flex-container
         nav-content
         ods-main
@@ -12,11 +13,13 @@
 </template>
 
 <script>
+import HeaderContent from "@/components/header/HeaderContent";
 import NavContent from "@/components/nav/NavContent";
 
 export default {
   name: "App",
   components: {
+    HeaderContent,
     NavContent
   },
 
@@ -24,6 +27,14 @@ export default {
     return {
       wrapClass: ""
     };
+  },
+
+  methods: {
+    handleHeigth(val) {
+      this.wrapClass = val
+        ? "ods-scrollbar--main-content has-top-bar"
+        : "ods-scrollbar--main-content";
+    }
   }
 };
 </script>

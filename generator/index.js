@@ -4,6 +4,7 @@ module.exports = (api, options) => {
       dependencies: {
         '@onesait/onesait-ds': '^1.0.0'
       }
-    })
+    }),
+    api.render('./template')
   }
 }
