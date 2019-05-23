@@ -1,0 +1,57 @@
+{	
+	"home": {
+		"cssClass": "my-custom-class",
+		"langs": {
+			"es": "Inicio",
+			"en": "Home"
+		},
+		"icon": "home",
+		"to": "/"
+	},
+	"users": {
+		"langs": {
+			"es": "Usuarios",
+			"en": "User"
+		},
+		"icon": "user-role",
+		"children": {
+			"all": {
+				"langs": {
+					"es": "Ver usuarios",
+					"en": "View users"
+				},
+				"to": "/users"
+			},
+			"my-user": {
+				"langs": {
+					"es": "Mi usuario",
+					"en": "My user"
+				},
+				"to": "/users/my-user"
+			},
+			"user-actions": {
+				"langs": {
+					"es": "Acciones de usuario",
+					"en": "User actions"
+				},
+				"children": {
+					"edit": {
+						"langs": {
+							"es": "Editar perfil",
+							"en": "Edit profile"
+						},
+						"to": "/users/my-user/edit"
+					}
+				}
+			}
+		}
+	},
+	"google": {
+		"langs": {
+			"es": "Link externo",
+			"en": "External link"
+		},
+		"icon": "external-link",
+		"to": "https://google.com"
+	}
+}

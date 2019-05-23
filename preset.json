@@ -1,24 +1,18 @@
 {
   "useTaobaoRegistry": false,
   "packageManager": "yarn",
-  "presets": {
-    "OnesaitPreset1": {
-      "useConfigFiles": true,
-      "plugins": {
-        "@vue/cli-plugin-babel": {},
-        "@vue/cli-plugin-pwa": {},
-        "@vue/cli-plugin-eslint": {
-          "config": "standard",
-          "lintOn": [
-            "save", "commit"
-          ]
-        },
-        "@vue/cli-plugin-unit-jest": {}
-      },
-      "router": true,
-      "routerHistoryMode": false,
-      "vuex": true,
-      "cssPreprocessor": "node-sass"
-    }
-  }
+  "useConfigFiles": true,
+  "plugins": {
+    "@vue/cli-plugin-babel": {},
+    "@vue/cli-plugin-pwa": {},
+    "@vue/cli-plugin-eslint": {
+      "config": "standard",
+      "lintOn": ["save", "commit"]
+    },
+    "@vue/cli-plugin-unit-jest": {}
+  },
+  "router": true,
+  "routerHistoryMode": false,
+  "vuex": true,
+  "cssPreprocessor": "node-sass"
 }

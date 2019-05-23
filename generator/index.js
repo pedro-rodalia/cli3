@@ -2,7 +2,7 @@ module.exports = (api, options) => {
   if (options.addODS) {
     api.extendPackage({
       dependencies: {
-        '@onesait/onesait-ds': '^0.1.0'
+        '@onesait/onesait-ds': '^1.0.0'
       }
     })
   }
