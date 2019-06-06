@@ -1,0 +1,130 @@
+
+@import 'typography-placeholder';
+
+// Medium
+.tp-m-exa{
+  @extend %tp-m-exa;
+}
+
+.tp-m-tera{
+  @extend %tp-m-tera;
+}
+
+.tp-m-giga{
+  @extend %tp-m-giga;
+}
+
+.tp-m-mega{
+  @extend %tp-m-mega;
+}
+
+.tp-m-kilo{
+  @extend %tp-m-kilo;
+}
+
+.tp-m-hecto{
+  @extend %tp-m-hecto;
+}
+
+.tp-m-deca{
+  @extend %tp-m-deca;
+}
+
+.tp-m-deci{
+  @extend %tp-m-deci;
+}
+
+.tp-m-centi{
+  @extend %tp-m-centi;
+}
+
+.tp-m-mili{
+  @extend %tp-m-mili;
+}
+
+.tp-m-micro{
+  @extend %tp-m-micro;
+}
+
+.tp-m-nano{
+  @extend %tp-m-nano;
+}
+
+
+// Regular
+.tp-r-exa{
+  @extend %tp-r-exa;
+}
+
+.tp-r-tera{
+  @extend %tp-r-tera;
+}
+
+.tp-r-giga{
+  @extend %tp-r-giga;
+}
+
+.tp-r-mega{
+  @extend %tp-r-mega;
+}
+
+.tp-r-kilo{
+  @extend %tp-r-kilo;
+}
+
+.tp-r-hecto{
+  @extend %tp-r-hecto;
+}
+
+.tp-r-deca{
+  @extend %tp-r-deca;
+}
+
+.tp-r-deci{
+  @extend %tp-r-deci;
+}
+
+.tp-r-centi{
+  @extend %tp-r-centi;
+}
+
+.tp-r-mili{
+  @extend %tp-r-mili;
+}
+
+.tp-r-micro{
+  @extend %tp-r-micro;
+}
+
+.tp-r-nano{
+  @extend %tp-r-nano;
+}
+
+
+
+// Extra
+.tp-tab-micro{
+  @extend %tp—tab-micro;
+}
+
+.tp-button-micro{
+  @extend %tp—button-micro;
+}
+
+.tp-label-nano{
+  @extend %tp-label-nano;
+}
+
+.tp-sectionbox-nano{
+  @extend %tp—sectionbox-nano;
+}
+
+.tp-r{
+  font-weight: $font-weight-regular;
+}
+.tp-m{
+  font-weight: $font-weight-medium;
+}
+.tp-b{
+  font-weight: $font-weight-bold;
+}
