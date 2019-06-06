@@ -3,8 +3,9 @@ module.exports = {
     loaderOptions: {
       sass: {
         data: `
-          @import "@/scss/_variables.scss";
-          @import "@/scss/_mixins.scss";
+          @import "@/assets/scss/base/_variables.scss";
+          @import "@/assets/scss/base/_mixins.scss";
+          @import "@/assets/scss/base/_typography-placeholder.scss";
         `
       }
     }
