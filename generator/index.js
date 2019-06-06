@@ -7,12 +7,13 @@ module.exports = (api, options) => {
     }),
     api.registerCommand('', {})
     api.render('./template')
-  },
+  }
+
   api.extendPackage({
     dependencies: {
       'pug-loader': '^2.4.0'
     }
-  }),
+  })
   api.chainWebpack(config =>
     config.module
       .rule('pug')
