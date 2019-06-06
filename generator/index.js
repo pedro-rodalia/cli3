@@ -1,5 +1,15 @@
 module.exports = (api, options) => {
   if (options.addODS) {
+    api.chainWebpack(config =>
+      config.module
+        .rule('pug')
+        .test(/\.pug$/)
+          .uses
+            .delete('pug-plain-loader')
+            .end()
+          .use('pug-loader')
+            .loader('pug-loader')
+    )
     api.extendPackage({
       dependencies: {
         '@onesait/onesait-ds': '^0.1.7',
@@ -8,14 +18,4 @@ module.exports = (api, options) => {
     })
     api.render('./template')
   }
-  api.chainWebpack(config =>
-    config.module
-      .rule('pug')
-      .test(/\.pug$/)
-        .uses
-          .delete('pug-plain-loader')
-          .end()
-        .use('pug-loader')
-          .loader('pug-loader')
-  )
 }
