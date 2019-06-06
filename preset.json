@@ -10,7 +10,7 @@
       "lintOn": ["save", "commit"]
     },
     "@vue/cli-plugin-unit-jest": {},
-    "@vue/cli-plugin-pug": {}
+    "vue-cli-plugin-pug": {}
   },
   "router": true,
   "routerHistoryMode": false,
