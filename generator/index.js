@@ -22,4 +22,5 @@ module.exports = (api, options) => {
           .end()
         .use('pug-loader')
           .loader('pug-loader')
+  )
 }
