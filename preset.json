@@ -1,7 +1,7 @@
 {
   "useTaobaoRegistry": false,
   "packageManager": "yarn",
-  "useConfigFiles": true,
+  "useConfigFiles": false,
   "plugins": {
     "@vue/cli-plugin-babel": {},
     "@vue/cli-plugin-pwa": {},
