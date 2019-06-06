@@ -15,18 +15,5 @@
   "router": true,
   "routerHistoryMode": false,
   "vuex": true,
-  "cssPreprocessor": "node-sass",
-  "configs": {
-    "vue": {
-      "css": {
-        "loaderOptions": {
-          "sass": {
-            "data": 
-              `@import "@/scss/_variables.scss";
-              @import "@/scss/_mixins.scss";`
-          }
-        }
-      }
-    }
-  }
+  "cssPreprocessor": "node-sass"
 }
