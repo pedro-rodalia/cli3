@@ -4,8 +4,8 @@ module.exports = (api, options) => {
       dependencies: {
         '@onesait/onesait-ds': '^0.1.79'
       }
-    })
-    api.registerCommand('', {})
+    }),
+      api.registerCommand('', {})
     api.render('./template')
   }
 }
