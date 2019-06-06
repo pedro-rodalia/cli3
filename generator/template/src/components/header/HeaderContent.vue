@@ -44,7 +44,7 @@ import SuitesMenu from '@/components/header/SuitesMenu'
 import HeaderCustomContent from '@/components/header/HeaderCustomContent'
 import HeaderNotifications from '@/components/header/HeaderNotifications'
 import HeaderTopBar from '@/components/header/HeaderTopBar'
-import cssVars from '@/assets/scss/base/_variables.scss'
+import cssVars from '@/assets/scss/base/variables.scss'
 
 export default {
   name: 'HeaderContent',
