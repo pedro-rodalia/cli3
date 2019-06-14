@@ -5,6 +5,11 @@ module.exports = (api, options) => {
         '@onesait/onesait-ds': '^0.1.79'
       }
     })
-    api.render('./template')
   }
+  api.extendPackage({
+    dependencies: {
+      'mini-css-extract-plugin': '^0.5'
+    }
+  })
+  api.render('./template')
 }
