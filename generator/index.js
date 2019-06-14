@@ -8,7 +8,7 @@ module.exports = (api, options) => {
   }
   api.extendPackage({
     dependencies: {
-      'mini-css-extract-plugin': '^0.5'
+      'sass-resources-loader': '^2.0.1'
     }
   })
   api.render('./template')
