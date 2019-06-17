@@ -12,7 +12,6 @@ module.exports = (api, options) => {
     }
   })
   api.injectImports(api.entryFile, `
-    import router from './router'
     import store from './store/store.js'
     import ODS from '@onesait/onesait-ds'
 
