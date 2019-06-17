@@ -12,7 +12,7 @@ module.exports = (api, options) => {
     }
   })
   api.injectImports(api.entryFile, `
-    import ODS from '@onesait/onesait-ds'
+    import ODS from '@onesait/onesait-ds // eslint-disable-line'
     Vue.use(ODS)
   `)
   api.render('./template')
