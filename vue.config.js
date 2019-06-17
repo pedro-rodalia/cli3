@@ -12,7 +12,7 @@ module.exports = {
           loader: 'sass-resources-loader',
           options: {
             resources: path.resolve('./src/scss/_variables.scss'),
-          },
+          }
         })
         return options
       })
@@ -23,7 +23,7 @@ module.exports = {
       .use('sass-resources-loader')
       .loader('sass-resources-loader')
       .options({
-        resources: path.resolve('./src/scss/_variables.scss'),
+        resources: path.resolve('./src/scss/_variables.scss')
       })
-  },
+  }
 }
