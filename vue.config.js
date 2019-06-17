@@ -1,19 +1,29 @@
+const path = require('path')
+
 module.exports = {
-  chainWebpack: config => {
-    const oneOfsMap = config.module.rule('scss').oneOfs.store
-    oneOfsMap.forEach(item => {
-      item
-        .use('sass-resources-loader')
-        .loader('sass-resources-loader')
-        .options({
-          resources: [
-            '../node_modules/@onesait/onesait-ds/packages/theme-onesait/src/common/var.scss',
-            '../src/assets/scss/base/_variables.scss',
-            '../src/assets/scss/base/_mixins.scss',
-            '../src/assets/scss/base/_typography-placeholder.scss'
-          ]
+  lintOnSave: false,
+  chainWebpack: (config) => {
+    config
+      .module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => {
+        options.loaders.scss = options.loaders.scss.concat({
+          loader: 'sass-resources-loader',
+          options: {
+            resources: path.resolve('./src/scss/_variables.scss'),
+          },
         })
-        .end()
-    })
-  }
+        return options
+      })
+
+    config
+      .module
+      .rule('scss')
+      .use('sass-resources-loader')
+      .loader('sass-resources-loader')
+      .options({
+        resources: path.resolve('./src/scss/_variables.scss'),
+      })
+  },
 }
