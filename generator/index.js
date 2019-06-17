@@ -11,5 +11,12 @@ module.exports = (api, options) => {
       'sass-resources-loader': '^2.0.1'
     }
   })
+  api.injectImports(api.entryFile, `
+    import router from './router'
+    import store from './store/store.js'
+    import ODS from '@onesait/onesait-ds'
+
+    Vue.use(ODS)
+  `)
   api.render('./template')
 }
