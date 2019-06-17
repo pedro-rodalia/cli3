@@ -12,7 +12,6 @@ module.exports = (api, options) => {
     }
   })
   api.injectImports(api.entryFile, `
-    import store from './store/store.js'
     import ODS from '@onesait/onesait-ds'
 
     Vue.use(ODS)
