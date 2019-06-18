@@ -15,7 +15,12 @@ module.exports = (api, options) => {
   })
   // api.injectImports(api.entryFile, 'Vue.use(ODS)')
 
-  api.injectImports(api.entryFile, ["import ODS from '@onesait/onesait-ds' // eslint-disable-line", "import i18n from './lang/i18n.js'"])
+  api.injectImports(api.entryFile, [
+    "import ODS from '@onesait/onesait-ds' // eslint-disable-line",
+    "import i18n from './lang/i18n.js' // eslint-disable-line",
+    "import { closest } from './utils/ie' // eslint-disable-line",
+    "import { truncate, formatDate } from './utils/filters' // eslint-disable-line"
+  ])
 
   api.onCreateComplete(() => {
     const entryFile = api.resolve(api.entryFile)
@@ -23,7 +28,13 @@ module.exports = (api, options) => {
     const contentMain = fs.readFileSync(entryFile, { encoding: 'utf-8' })
     const lines = contentMain.split(/\r?\n/g)
     const renderIndex = lines.findIndex(line => line.match(/new Vue/))
-    lines[renderIndex] = `Vue.use(ODS);${EOL}${EOL}` + lines[renderIndex]
+    lines[renderIndex] = `
+      closest()${EOL}${EOL}
+      Vue.filter('truncate', truncate)${EOL}
+      Vue.filter('formatDate', formatDate)${EOL}${EOL}
+      Vue.use(ODS)${EOL}${EOL}
+      ${lines[renderIndex]}${EOL}
+      i18n,`
     fs.writeFileSync(entryFile, lines.join(EOL), { encoding: 'utf-8' })
   })
 
