@@ -1,3 +1,5 @@
+const { EOL } = require('os')
+
 module.exports = (api, options) => {
   if (options.addODS) {
     api.extendPackage({
@@ -16,7 +18,13 @@ module.exports = (api, options) => {
   api.injectImports(api.entryFile, "import ODS from '@onesait/onesait-ds' // eslint-disable-line")
 
   api.onCreateComplete(() => {
-    api.injectImports(api.entryFile, 'Vue.use(ODS)')
+    const entryFile = api.resolve(api.entryFile)
+    const fs = require('fs')
+    const contentMain = fs.readFileSync(entryFile, { encoding: 'utf-8' })
+    const lines = contentMain.split(/\r?\n/g)
+    const renderIndex = lines.findIndex(line => line.match(/new Vue/))
+    lines[renderIndex] = `Vue.use(ODS, {});${EOL}${EOL}`
+    fs.writeFileSync(entryFile, lines.join(EOL), { encoding: 'utf-8' })
   })
 
   api.render('./template')
