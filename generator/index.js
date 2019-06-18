@@ -10,7 +10,8 @@ module.exports = (api, options) => {
   }
   api.extendPackage({
     dependencies: {
-      'sass-resources-loader': '^2.0.1'
+      'sass-resources-loader': '^2.0.1',
+      'vue-i18n': '^8.0.0'
     }
   })
   // api.injectImports(api.entryFile, 'Vue.use(ODS)')
@@ -29,11 +30,11 @@ module.exports = (api, options) => {
     const lines = contentMain.split(/\r?\n/g)
     const renderIndex = lines.findIndex(line => line.match(/new Vue/))
     lines[renderIndex] = `
-      closest()${EOL}${EOL}
-      Vue.filter('truncate', truncate)${EOL}
+      closest()${EOL}
+      Vue.filter('truncate', truncate)
       Vue.filter('formatDate', formatDate)${EOL}${EOL}
       Vue.use(ODS)${EOL}${EOL}
-      ${lines[renderIndex]}${EOL}
+      ${lines[renderIndex]}
       i18n,`
     fs.writeFileSync(entryFile, lines.join(EOL), { encoding: 'utf-8' })
   })
