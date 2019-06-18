@@ -78,9 +78,9 @@ export default {
     LangSelector
   },
   methods: {
-    ...mapGetters([
-      'isMobile'
-    ])
+    ...mapGetters({
+      isMobile: 'isMobile'
+    })
   },
   computed: {
     mobile () {
