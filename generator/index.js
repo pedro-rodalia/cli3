@@ -23,7 +23,7 @@ module.exports = (api, options) => {
     const contentMain = fs.readFileSync(entryFile, { encoding: 'utf-8' })
     const lines = contentMain.split(/\r?\n/g)
     const renderIndex = lines.findIndex(line => line.match(/new Vue/))
-    lines[renderIndex] = `Vue.use(ODS, {});${EOL}${EOL}`
+    lines[renderIndex] = `Vue.use(ODS);${EOL}${EOL}` + lines[renderIndex]
     fs.writeFileSync(entryFile, lines.join(EOL), { encoding: 'utf-8' })
   })
 
