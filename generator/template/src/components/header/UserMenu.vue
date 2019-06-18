@@ -7,7 +7,7 @@
     li
       lang-selector(
         cssClass="user-ul__languages"
-        :mobile="mobile")
+        :mobile="isMobile")
     li.ods-actions-menu__separator
     router-link(
       tag="li"
@@ -77,15 +77,10 @@ export default {
   components: {
     LangSelector
   },
-  methods: {
+  computed: {
     ...mapGetters({
       isMobile: 'isMobile'
     })
-  },
-  computed: {
-    mobile () {
-      return this.isMobile
-    }
   }
 }
 </script>

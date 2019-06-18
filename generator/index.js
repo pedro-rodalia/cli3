@@ -28,6 +28,9 @@ module.exports = (api, options) => {
     const fs = require('fs')
     const contentMain = fs.readFileSync(entryFile, { encoding: 'utf-8' })
     const lines = contentMain.split(/\r?\n/g)
+    const imports = lines.findIndex(line => line.match(/store/))
+    lines[imports] = `
+    import store from './store/store.js'`
     const renderIndex = lines.findIndex(line => line.match(/new Vue/))
     lines[renderIndex] = `
       closest()${EOL}
