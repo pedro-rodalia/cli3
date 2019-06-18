@@ -20,7 +20,10 @@ module.exports = (api, options) => {
     "import ODS from '@onesait/onesait-ds' // eslint-disable-line",
     "import i18n from './lang/i18n.js' // eslint-disable-line",
     "import { closest } from './utils/ie' // eslint-disable-line",
-    "import { truncate, formatDate } from './utils/filters' // eslint-disable-line"
+    "import { truncate, formatDate } from './utils/filters' // eslint-disable-line \n",
+    "import 'reset-css/reset.css'",
+    "import '@onesait/onesait-ds/lib/theme-onesait/index.css'",
+    "import '@/assets/scss/main.scss'"
   ])
 
   api.onCreateComplete(() => {
@@ -29,8 +32,7 @@ module.exports = (api, options) => {
     const contentMain = fs.readFileSync(entryFile, { encoding: 'utf-8' })
     const lines = contentMain.split(/\r?\n/g)
     const imports = lines.findIndex(line => line.match(/store/))
-    lines[imports] = `
-    import store from './store/store.js'`
+    lines[imports] = `import store from './store/store.js'`
     const renderIndex = lines.findIndex(line => line.match(/new Vue/))
     lines[renderIndex] = `
       closest()${EOL}
