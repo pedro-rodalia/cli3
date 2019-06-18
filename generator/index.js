@@ -10,6 +10,8 @@ module.exports = (api, options) => {
   }
   api.extendPackage({
     dependencies: {
+      'reset-css': '^2.2.1',
+      'axios': '^0.17.1',
       'sass-resources-loader': '^2.0.1',
       'vue-i18n': '^8.0.0'
     }
