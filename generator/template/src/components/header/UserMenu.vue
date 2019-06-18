@@ -79,12 +79,12 @@ export default {
   },
   methods: {
     ...mapGetters([
-      'getIsMobile'
+      'isMobile'
     ])
   },
   computed: {
     mobile () {
-      return this.getIsMobile()
+      return this.isMobile()
     }
   }
 }

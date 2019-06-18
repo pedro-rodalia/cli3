@@ -8,6 +8,12 @@ import example from './modules/example'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {
+    mqPhone: window.matchMedia('(max-width: 767px)')
+  },
+  getters: {
+    isMobile: state => state.mqPhone.matches
+  },
   modules: {
     example
   }
