@@ -15,7 +15,7 @@ module.exports = (api, options) => {
   })
   // api.injectImports(api.entryFile, 'Vue.use(ODS)')
 
-  api.injectImports(api.entryFile, "import ODS from '@onesait/onesait-ds' // eslint-disable-line")
+  api.injectImports(api.entryFile, ["import ODS from '@onesait/onesait-ds' // eslint-disable-line", "import i18n from './lang/i18n.js'"])
 
   api.onCreateComplete(() => {
     const entryFile = api.resolve(api.entryFile)
