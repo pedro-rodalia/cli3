@@ -11,7 +11,7 @@ module.exports = (api, options) => {
       'sass-resources-loader': '^2.0.1'
     }
   })
-  api.injectImports(api.entryFile, "import ODS from '@onesait/onesait-ds' // eslint-disable-line")
+  api.injectImports(api.entryFile, "import ODS from '@onesait/onesait-ds' // eslint-disable-line \nVue.use(ODS)")
   // api.injectImports(api.entryFile, 'Vue.use(ODS)')
   api.render('./template')
 }
