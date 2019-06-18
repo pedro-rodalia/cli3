@@ -84,7 +84,7 @@ export default {
   },
   computed: {
     mobile () {
-      return this.isMobile()
+      return this.isMobile
     }
   }
 }
