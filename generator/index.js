@@ -12,9 +12,9 @@ module.exports = (api, options) => {
     }
   })
   // api.injectImports(api.entryFile, 'Vue.use(ODS)')
-  api.render('./template')
+
   api.injectImports(api.entryFile, "import ODS from '@onesait/onesait-ds' // eslint-disable-line")
-  
+
   api.onCreateComplete(() => {
     const { EOL } = require('os')
     const fs = require('fs')
@@ -26,4 +26,6 @@ module.exports = (api, options) => {
 
     fs.writeFileSync(api.entryFile, lines.join(EOL), { encoding: 'utf-8' })
   })
+
+  api.render('./template')
 }
