@@ -1,8 +1,8 @@
 module.exports = [
   {
-    name: `addODS`,
+    name: `addMenu`,
     type: 'confirm',
-    message: '¿Añadir el Sistema de Diseño de Onesait?',
+    message: '¿Añadir el menú lateral de navegación?',
     default: true
   }
 ]

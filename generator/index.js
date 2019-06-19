@@ -1,15 +1,10 @@
 const { EOL } = require('os')
 
 module.exports = (api, options) => {
-  if (options.addODS) {
-    api.extendPackage({
-      dependencies: {
-        '@onesait/onesait-ds': '^0.1.79'
-      }
-    })
-  }
+
   api.extendPackage({
     dependencies: {
+      '@onesait/onesait-ds': '^0.1.79',
       'reset-css': '^2.2.1',
       'axios': '^0.17.1',
       'sass-resources-loader': '^2.0.1',
@@ -47,4 +42,10 @@ module.exports = (api, options) => {
   })
 
   api.render('./template')
+
+  if (options.addMenu) {
+    api.render('./template')
+  } else {
+    api.render('./template-no-nav')
+  }
 }
