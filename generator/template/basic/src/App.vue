@@ -3,7 +3,9 @@
     template(v-if="!this.$route.path.includes('login')")
       header-content(@hasTopBar="handleHeigth")
       div.flex-container
+        <%_ if(options.addMenu) { _%>
         nav-content
+        <%_ } _%>
         ods-main
           ods-scrollbar(:wrapClass="wrapClass")
             router-view
@@ -14,13 +16,15 @@
 
 <script>
 import HeaderContent from "@/components/header/HeaderContent";
+<%_ if(options.addMenu) { _%>
 import NavContent from "@/components/nav/NavContent";
+<%_ } _%>
 
 export default {
   name: "App",
   components: {
-    HeaderContent,
-    NavContent
+    HeaderContent<%_ if(options.addMenu) { _%>,
+    NavContent<%_ } _%>
   },
 
   data() {

@@ -41,11 +41,11 @@ module.exports = (api, options) => {
     fs.writeFileSync(entryFile, lines.join(EOL), { encoding: 'utf-8' })
   })
 
-  api.render('./template')
+  api.render('./template/basic', {
+    ...options
+  })
 
   if (options.addMenu) {
-    api.render('./template')
-  } else {
-    api.render('./template-no-nav')
+    api.render('./template/nav-sidebar')
   }
 }
