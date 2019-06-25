@@ -48,4 +48,8 @@ module.exports = (api, options) => {
   if (options.addMenu) {
     api.render('./template/nav-sidebar')
   }
+
+  if (options.addLogin) {
+    api.render('./template/login')
+  }
 }

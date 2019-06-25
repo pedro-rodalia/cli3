@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import axios from 'axios'
-import example from './modules/example'
 
+import example from './modules/example'
+<%_ if(options.addLogin) { _%>
+import login from './modules/login'
+<%_ } _%>
 // axios.defaults.baseURL = ''
 
 Vue.use(Vuex)
@@ -22,6 +24,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    example
+    example<%_ if(options.addLogin) { _%>,
+    login<%_ } _%>
   }
 })

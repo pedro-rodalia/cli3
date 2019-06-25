@@ -18,4 +18,38 @@ export default {
     editUser: 'Editar usuario'
   }
   <%_ } _%>
+  <%_ if(options.addLogin) { _%>,
+  login: {
+    title: 'Iniciar sesión',
+    user: 'Nombre de usuario',
+    password: 'Contraseña',
+    submitButton: 'Enviar',
+    rules: {
+      user: 'Introduzca el usuario',
+      password: 'Introduzca la contaseña'
+    },
+    logging: 'Iniciando sesión...',
+    loginErrorTitle: 'Error de validación.',
+    loginError: `La combinación usuario/contraseña no es valida.`,
+    forgotPassword: '¿Has olvidado tu contraseña?',
+    keepMeLogged: 'Mantener sesión iniciada',
+    login: 'Entrar',
+    footerLinks: ['faq', 'términos', 'condiciones']
+  },
+  password: {
+    title: 'Restablecer contraseña',
+    message: 'Introduce una cuenta de correo electrónico vinculada al producto para continuar',
+    email: 'Correo electrónico',
+    submitButton: 'Enviar',
+    goBack: 'Volver',
+    error: 'Email no encontrado.',
+    sending: 'Enviando...',
+    rules: {
+      email: 'Email no encontrado'
+    },
+    emailSubmitted: 'Hemos enviado un correo electrónico con instrucciones para poder restablecer su contraseña a:',
+    done: 'Finalizar',
+    emailError: 'No existe ninguna cuenta vinculada a este correo electrónico: '
+  }
+  <%_ } _%> 
 }
