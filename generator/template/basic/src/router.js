@@ -9,8 +9,6 @@ import Login from '@/views/login/Login'
 import LoginForm from '@/components/login/LoginForm'
 import LoginPasswordForm from '@/components/login/LoginPasswordForm'
 <%_ } _%>
-
-import { setBreadcrumbParams } from './breadcrumb-params'
 Vue.use(Router)
 
 /* function to add breadcrumbs to a view */
