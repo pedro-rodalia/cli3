@@ -8,7 +8,7 @@ import RouteView from '@/components/shared/RouteView'
 import Login from '@/views/login/Login'
 import LoginForm from '@/components/login/LoginForm'
 import LoginPasswordForm from '@/components/login/LoginPasswordForm'
-<%_ } _>
+<%_ } _%>
 
 import { setBreadcrumbParams } from './breadcrumb-params'
 Vue.use(Router)
