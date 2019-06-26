@@ -71,6 +71,8 @@ route.beforeEach((to, from, next) => {
   } else {
     next()
   }
+  <%_ }  else { _%>
+  next()
   <%_ } _%>
   setBreadcrumbParams(to)
 })
