@@ -7,8 +7,8 @@
     :showSuitesMenu="<%_ if(options.headerOptions.multisuits) { _%> true <%_ } else { _%> false <%_ } _%>"
     :showBreadcrumbs="true"
     :environment="env"
-    :showActionsMenu="true"
-    :showUserMenu="true"
+    :showActionsMenu="<%_ if(options.headerOptions.optionsMenu) { _%> true <%_ } else { _%> false <%_ } _%>"
+    :showUserMenu="<%_ if(options.headerOptions.userMenu) { _%> true <%_ } else { _%> false <%_ } _%>"
     :topBarBackground="cssVars.topBarBg"
     topBarClass="my-top-bar"
     :topBarBorder="false"
@@ -24,15 +24,21 @@
       user-menu
     template(slot="suites")
       suites-menu
+    <%_ if(options.headerOptions.logoCliente) { _%>
     template(slot="clientLogo")
       div.ods-main-header__client-logo
         img(
           src="@/assets/images/header/logo-cliente.svg"
           alt="logo")
+    <%_ } _%>
+    <%_ if(options.headerOptions.configMenu) { _%>
     template(slot="custom")
       header-custom-content
+    <%_ } _%> 
+    <%_ if(options.headerOptions.alertas) { _%>
     template(slot="notifications")
       header-notifications
+    <%_ } _%>
     template(slot="topbar")
       header-top-bar
 </template>
@@ -42,7 +48,9 @@ import HeaderActions from '@/components/header/HeaderActions'
 import UserMenu from '@/components/header/UserMenu'
 import SuitesMenu from '@/components/header/SuitesMenu'
 import HeaderCustomContent from '@/components/header/HeaderCustomContent'
+<%_ if(options.headerOptions.notifications) { _%>
 import HeaderNotifications from '@/components/header/HeaderNotifications'
+<%_ } _%>
 import HeaderTopBar from '@/components/header/HeaderTopBar'
 import cssVars from '@/assets/scss/base/_variables.scss'
 

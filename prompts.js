@@ -25,8 +25,12 @@ module.exports = [
         default: false
       },
       {
-        name: `notificaciones`,
-        default: false
+        name: `logoCliente`,
+        default: true
+      },
+      {
+        name: `configMenu`,
+        default: true
       },
       {
         name: 'optionsMenu',
