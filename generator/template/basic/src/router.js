@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 <%_ if(options.addMenu) { _%>
-import RouteView from '@/components/shared/RouteView'
 <%_ } _%>
 <%_ if(options.addLogin) { _%>
 import Login from '@/views/login/Login'
