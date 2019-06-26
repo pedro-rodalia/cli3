@@ -39,7 +39,7 @@ module.exports = (api, options) => {
       ${lines[renderIndex]}
       i18n,`
     fs.writeFileSync(entryFile, lines.join(EOL), { encoding: 'utf-8' })
-    fs.unlinkSync('src/store.js')
+    fs.unlink('src/store.js')
   })
 
   api.render('./template/basic', {
