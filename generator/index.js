@@ -39,8 +39,8 @@ module.exports = (api, options) => {
       ${lines[renderIndex]}
       i18n,`
     fs.writeFileSync(entryFile, lines.join(EOL), { encoding: 'utf-8' })
-    console.log('api.resolve():', api.resolve('src/store.js'))
-    fs.unlink('src/store.js', (err) => {
+    const storeFile = api.resolve('src/store.js')
+    fs.unlink(storeFile, (err) => {
       if (err) {
         console.log('err:', err)
       }
