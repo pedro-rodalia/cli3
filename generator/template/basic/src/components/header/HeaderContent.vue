@@ -48,9 +48,7 @@ import HeaderActions from '@/components/header/HeaderActions'
 import UserMenu from '@/components/header/UserMenu'
 import SuitesMenu from '@/components/header/SuitesMenu'
 import HeaderCustomContent from '@/components/header/HeaderCustomContent'
-<%_ if(options.headerOptions.notifications) { _%>
 import HeaderNotifications from '@/components/header/HeaderNotifications'
-<%_ } _%>
 import HeaderTopBar from '@/components/header/HeaderTopBar'
 import cssVars from '@/assets/scss/base/_variables.scss'
 
