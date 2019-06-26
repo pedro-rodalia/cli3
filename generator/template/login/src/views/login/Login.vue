@@ -28,24 +28,12 @@ export default {
     LoginFooter,
     LangSelector
   },
-  methods: {
-    ...mapGetters([
-      'getLoaderState',
-      'getIsMobile',
-      'getIsPasswordForm'
-    ])
-  },
   computed: {
-    loading () {
-      return this.getLoaderState()
-    },
-    mobile () {
-      return this.getIsMobile()
-    },
-    password () {
-      let pwd = this.getIsPasswordForm()
-      return pwd
-    }
+    ...mapGetters({
+      loading: 'getLoaderState',
+      mobile: 'isMobile',
+      password: 'getIsPasswordForm'
+    })
   }
 }
 
