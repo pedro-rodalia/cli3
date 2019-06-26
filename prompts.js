@@ -17,23 +17,23 @@ module.exports = [
     message: '¿Qué plugins quieres preinstalar en la cabecera?',   
     choices: [
       {
-        name: `alerts`,
-        message: 'Alertas',
+        name: `alertas`,
         default: false
       },
       {
-        name: `notifications`,
-        message: 'Notificaciones',
+        name: `multisuits`,
         default: false
       },
       {
-        message: `Menu de opciones`,
-        name: 'menu',
+        name: `notificaciones`,
         default: false
       },
       {
-        message: `Avatar con menú de usuario`,
-        name: 'usermenu',
+        name: 'optionsMenu',
+        default: false
+      },
+      {
+        name: 'userMenu',
         default: true
       }
     ]

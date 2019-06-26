@@ -4,7 +4,7 @@
     logoUrl="/"
     breadcrumbSeparator=">"
     actionsMenuIcon="overflow-menu"
-    :showSuitesMenu="true"
+    :showSuitesMenu="<%_ if(options.headerOptions.multisuits) { _%> true <%_ } else { _%> false <%_ } _%>"
     :showBreadcrumbs="true"
     :environment="env"
     :showActionsMenu="true"
