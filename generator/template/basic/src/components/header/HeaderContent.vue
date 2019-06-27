@@ -1,7 +1,7 @@
 <template lang="pug">
 #try
   p <%= options.headerOptions %>
-  p <%= options.headerOptions.userMenu %>
+  p <%= !!options.headerOptions.userMenu %>
   ods-main-header(
     headerLogoText="product"
     logoUrl="/"
