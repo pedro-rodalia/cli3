@@ -45,13 +45,13 @@ module.exports = (api, options) => {
         console.log('err:', err)
       }
     })
-    console.log('options:', options.headerOptions)
-    console.log('options.userMenu:', !!options.headerOptions.userMenu)
   })
 
   api.render('./template/basic', {
     ...options
   })
+
+  api.render('./template/example')
 
   if (options.addMenu) {
     api.render('./template/nav-sidebar')
