@@ -1,20 +1,14 @@
 <template lang="pug">
-#try
-  p <%= options.headerOptions %>
-  p <%= !!options.headerOptions.userMenu %>
-  p <%= options.headerOptions.userMenu %>
-  p <%= options.headerOptions['userMenu'] %>
-  p <%= options.headerOptions.includes('userMenu') %>
   ods-main-header(
     headerLogoText="product"
     logoUrl="/"
     breadcrumbSeparator=">"
     actionsMenuIcon="overflow-menu"
-    :showSuitesMenu="<%= !!options.headerOptions.multisuits %>"
+    :showSuitesMenu="<%= !!options.headerOptions.includes('multisuits') %>"
     :showBreadcrumbs="true"
     :environment="env"
-    :showActionsMenu="<%= !!options.headerOptions.optionsMenu %>"
-    :showUserMenu="<%= !!options.headerOptions.userMenu %>"
+    :showActionsMenu="<%= !!options.headerOptions.includes('optionsMenu') %>"
+    :showUserMenu="<%= !!options.headerOptions.includes('userMenu') %>"
     :topBarBackground="cssVars.topBarBg"
     topBarClass="my-top-bar"
     :topBarBorder="false"
@@ -30,18 +24,18 @@
       user-menu
     template(slot="suites")
       suites-menu
-    <% if(options.headerOptions.logoCliente) { %>
+    <% if(options.headerOptions.includes('logoCliente')) { %>
     template(slot="clientLogo")
       div.ods-main-header__client-logo
         img(
           src="@/assets/images/header/logo-cliente.svg"
           alt="logo")
     <% } %>
-    <% if(options.headerOptions.configMenu) { %>
+    <% if(options.headerOptions.includes('configMenu')) { %>
     template(slot="custom")
       header-custom-content
     <% } %> 
-    <% if(options.headerOptions.alertas) { %>
+    <% if(options.headerOptions.includes('alertas').) { %>
     template(slot="notifications")
       header-notifications
     <% } %>
