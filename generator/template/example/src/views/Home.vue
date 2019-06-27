@@ -87,16 +87,16 @@
     <ods-col :xs="24" :sm="12" :lg="6">
       <h2>Avatar</h2>
       <ods-avatar size="small">
-        <img alt="onesait default avatar" src="@/assets/images/avatar.svg">
+        <img alt="onesait default avatar" src="@/assets/images/header/avatar.svg">
       </ods-avatar>
       <ods-avatar size="medium">
-        <img alt="onesait default avatar" src="@/assets/images/avatar.svg">
+        <img alt="onesait default avatar" src="@/assets/images/header/avatar.svg">
       </ods-avatar>
       <ods-avatar size="large">
-        <img alt="onesait default avatar" src="@/assets/images/avatar.svg">
+        <img alt="onesait default avatar" src="@/assets/images/header/avatar.svg">
       </ods-avatar>
       <ods-avatar size="xlarge">
-        <img alt="onesait default avatar" src="@/assets/images/avatar.svg">
+        <img alt="onesait default avatar" src="@/assets/images/header/avatar.svg">
       </ods-avatar>
     </ods-col>
   </ods-row>

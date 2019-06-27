@@ -41,5 +41,11 @@ module.exports = [
         default: true
       }
     ]
+  },
+  {
+    name: `examplePage`,
+    type: 'confirm',
+    message: '¿Quieres ver en la página principal un ejemplo de los componentes disponibles?',
+    default: false
   }
 ]

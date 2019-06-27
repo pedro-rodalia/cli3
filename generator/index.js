@@ -51,7 +51,9 @@ module.exports = (api, options) => {
     ...options
   })
 
-  api.render('./template/example')
+  if (options.examplePage) {
+    api.render('./template/example')
+  }
 
   if (options.addMenu) {
     api.render('./template/nav-sidebar')
