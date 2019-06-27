@@ -4,7 +4,7 @@
   p <%= !!options.headerOptions.userMenu %>
   p <%= options.headerOptions.userMenu %>
   p <%= options.headerOptions['userMenu'] %>
-  p <%= !!options.headerOptions.contains('userMenu') %>
+  p <%= options.headerOptions.includes('userMenu') %>
   ods-main-header(
     headerLogoText="product"
     logoUrl="/"
