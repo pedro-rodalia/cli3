@@ -4,11 +4,11 @@
     logoUrl="/"
     breadcrumbSeparator=">"
     actionsMenuIcon="overflow-menu"
-    :showSuitesMenu="<%_ !!options.headerOptions.multisuits _%>"
+    :showSuitesMenu="<%= !!options.headerOptions.multisuits %>"
     :showBreadcrumbs="true"
     :environment="env"
-    :showActionsMenu="<%_ !!options.headerOptions.optionsMenu _%>"
-    :showUserMenu="<%_ !!options.headerOptions.userMenu _%>"
+    :showActionsMenu="<%= !!options.headerOptions.optionsMenu %>"
+    :showUserMenu="<%= !!options.headerOptions.userMenu %>"
     :topBarBackground="cssVars.topBarBg"
     topBarClass="my-top-bar"
     :topBarBorder="false"
@@ -24,21 +24,21 @@
       user-menu
     template(slot="suites")
       suites-menu
-    <%_ if(options.headerOptions.logoCliente) { _%>
+    <% if(options.headerOptions.logoCliente) { %>
     template(slot="clientLogo")
       div.ods-main-header__client-logo
         img(
           src="@/assets/images/header/logo-cliente.svg"
           alt="logo")
-    <%_ } _%>
-    <%_ if(options.headerOptions.configMenu) { _%>
+    <% } %>
+    <% if(options.headerOptions.configMenu) { %>
     template(slot="custom")
       header-custom-content
-    <%_ } _%> 
-    <%_ if(options.headerOptions.alertas) { _%>
+    <% } %> 
+    <% if(options.headerOptions.alertas) { %>
     template(slot="notifications")
       header-notifications
-    <%_ } _%>
+    <% } %>
     template(slot="topbar")
       header-top-bar
 </template>
