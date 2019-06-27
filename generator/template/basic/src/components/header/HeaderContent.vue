@@ -35,7 +35,7 @@
     template(slot="custom")
       header-custom-content
     <% } %> 
-    <% if(options.headerOptions.includes('alertas').) { %>
+    <% if(options.headerOptions.includes('alertas')) { %>
     template(slot="notifications")
       header-notifications
     <% } %>
