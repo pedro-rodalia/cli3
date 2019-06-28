@@ -49,16 +49,24 @@ module.exports = (api, options) => {
     const renderIndex = lines.findIndex(line => line.match(/new Vue/))
     if (options.helpTour) {
       lines[renderIndex] = `
-      require('vue-tour/dist/vue-tour.css')${EOL}
-      Vue.use(VueTour)${EOL}${EOL}`
+        require('vue-tour/dist/vue-tour.css')${EOL}
+        Vue.use(VueTour)${EOL}${EOL}
+        closest()${EOL}
+        Vue.filter('truncate', truncate)
+        Vue.filter('formatDate', formatDate)${EOL}${EOL}
+        Vue.use(ODS)${EOL}${EOL}
+        ${lines[renderIndex]}
+        i18n,`
+    } else {
+      lines[renderIndex] = `
+        closest()${EOL}
+        Vue.filter('truncate', truncate)
+        Vue.filter('formatDate', formatDate)${EOL}${EOL}
+        Vue.use(ODS)${EOL}${EOL}
+        ${lines[renderIndex]}
+        i18n,`
     }
-    lines[renderIndex] += `
-      closest()${EOL}
-      Vue.filter('truncate', truncate)
-      Vue.filter('formatDate', formatDate)${EOL}${EOL}
-      Vue.use(ODS)${EOL}${EOL}
-      ${lines[renderIndex]}
-      i18n,`
+    
     fs.writeFileSync(entryFile, lines.join(EOL), { encoding: 'utf-8' })
     const storeFile = api.resolve('src/store.js')
     fs.unlink(storeFile, (err) => {
