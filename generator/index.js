@@ -34,7 +34,7 @@ module.exports = (api, options) => {
     })
 
     api.injectImports(api.entryFile, [
-      "import VueTour from 'vue-tour'"
+      "import VueTour from 'vue-tour' // eslint-disable-line"
     ])
   }
   
