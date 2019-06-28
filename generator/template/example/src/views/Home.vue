@@ -188,14 +188,14 @@
         :options="cascaderOptions"
         v-model="selectedOptions"
         @change="handleChange"
-        cascaderLabel="My AAA label"
+        cascaderLabel="My AAA label 1"
         showCascaderLabel />
       <h6>No label</h6>
       <ods-cascader
         :options="cascaderOptions"
         v-model="selectedOptions"
         @change="handleChange"
-        cascaderLabel="My AAA label" />
+        cascaderLabel="My AAA label 2" />
         <h6>Cascader filterable</h6>
         <ods-cascader
           placeholder="Try searching: Guide"
@@ -1909,7 +1909,6 @@ export default {
 
   methods: {
     transferFilterMethod(query, item) {
-      console.log(query, item)
       return item.initial.toLowerCase().indexOf(query.toLowerCase()) > -1;
     },
     openMessage() {
@@ -1990,7 +1989,7 @@ export default {
         if (valid) {
           alert('submit!');
         } else {
-          console.log('error submit!!');
+          console.error('error submit!!');
           return false;
         }
       });

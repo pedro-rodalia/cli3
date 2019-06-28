@@ -11,8 +11,10 @@ module.exports = (api, options) => {
       'vue-i18n': '^8.0.0'
     }
   })
-  // api.injectImports(api.entryFile, 'Vue.use(ODS)')
 
+  
+  // api.injectImports(api.entryFile, 'Vue.use(ODS)')
+  
   api.injectImports(api.entryFile, [
     "import ODS from '@onesait/onesait-ds' // eslint-disable-line",
     "import i18n from './lang/i18n.js' // eslint-disable-line",
@@ -22,6 +24,20 @@ module.exports = (api, options) => {
     "import '@onesait/onesait-ds/lib/theme-onesait/index.css'",
     "import '@/assets/scss/main.scss'"
   ])
+  
+  
+  if (options.helpTour) {
+    api.extendPackage({
+      dependencies: {
+        'vue-tour': '^1.1.0'
+      }
+    })
+
+    api.injectImports(api.entryFile, [
+      "import VueTour from 'vue-tour'"
+    ])
+  }
+  
 
   api.onCreateComplete(() => {
     const entryFile = api.resolve(api.entryFile)
@@ -31,7 +47,12 @@ module.exports = (api, options) => {
     const imports = lines.findIndex(line => line.match(/store/))
     lines[imports] = `import store from './store/store.js'`
     const renderIndex = lines.findIndex(line => line.match(/new Vue/))
-    lines[renderIndex] = `
+    if (options.helpTour) {
+      lines[renderIndex] = `
+      require('vue-tour/dist/vue-tour.css')${EOL}
+      Vue.use(VueTour)${EOL}${EOL}`
+    }
+    lines[renderIndex] += `
       closest()${EOL}
       Vue.filter('truncate', truncate)
       Vue.filter('formatDate', formatDate)${EOL}${EOL}

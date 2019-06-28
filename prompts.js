@@ -47,5 +47,11 @@ module.exports = [
     type: 'confirm',
     message: '¿Quieres ver en la página principal un ejemplo de los componentes disponibles?',
     default: false
+  },
+  {
+    name: `helpTour`,
+    type: 'confirm',
+    message: '¿Quieres instalar un tour de ayuda para comenzar?',
+    default: false
   }
 ]
