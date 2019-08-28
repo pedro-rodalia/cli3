@@ -5,9 +5,10 @@ export default {
   label: 'Español',
   labelMobile: 'ES',
   serverError: 'Ha ocurrido un error inesperado en el servidor. Inténtalo de nuevo.',
-  <%_ if(options.addMenu) { _%>
+  
   breadcrumb: {
     home: 'Inicio',
+    <%_ if(options.addMenu) { _%>
     dashboard: 'Escritorio',
     tasks: 'Tareas',
     users: 'Usuarios',
@@ -16,8 +17,8 @@ export default {
     editProfile: 'Editar mi perfil',
     myUser: 'Mi usuario',
     editUser: 'Editar usuario'
+    <%_ } _%>
   }
-  <%_ } _%>
   <%_ if(options.addLogin) { _%>,
   login: {
     title: 'Iniciar sesión',
