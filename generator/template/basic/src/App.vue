@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import HeaderContent from "@/components/header/HeaderContent";
+import HeaderContent from "@/components/header/HeaderContent"
 <%_ if(options.addMenu) { _%>
-import NavContent from "@/components/nav/NavContent";
+import NavContent from "@/components/nav/NavContent"
 <%_ } _%>
 
 export default {

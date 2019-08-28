@@ -12,9 +12,8 @@ module.exports = (api, options) => {
     }
   })
 
-  
   // api.injectImports(api.entryFile, 'Vue.use(ODS)')
-  
+
   api.injectImports(api.entryFile, [
     "import ODS from '@onesait/onesait-ds' // eslint-disable-line",
     "import i18n from './lang/i18n.js' // eslint-disable-line",
@@ -24,8 +23,7 @@ module.exports = (api, options) => {
     "import '@onesait/onesait-ds/lib/theme-onesait/index.css'",
     "import '@/assets/scss/main.scss'"
   ])
-  
-  
+
   if (options.helpTour) {
     api.extendPackage({
       dependencies: {
@@ -37,7 +35,6 @@ module.exports = (api, options) => {
       "import VueTour from 'vue-tour' // eslint-disable-line"
     ])
   }
-  
 
   api.onCreateComplete(() => {
     const entryFile = api.resolve(api.entryFile)
@@ -66,7 +63,7 @@ module.exports = (api, options) => {
         ${lines[renderIndex]}
         i18n,`
     }
-    
+
     fs.writeFileSync(entryFile, lines.join(EOL), { encoding: 'utf-8' })
     const storeFile = api.resolve('src/store.js')
     fs.unlink(storeFile, (err) => {

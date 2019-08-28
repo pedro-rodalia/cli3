@@ -48,7 +48,7 @@ const route = new Router({
     },<%_ } _%>
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: Home,
       meta: {
         <%_ if(options.addLogin) { _%>
