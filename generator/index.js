@@ -1,8 +1,8 @@
 const { EOL } = require('os')
 
 module.exports = (api, options) => {
-
   api.extendPackage({
+    author: 'Carlos Prat',
     dependencies: {
       '@onesait/onesait-ds': '^0.1.79',
       'reset-css': '^2.2.1',

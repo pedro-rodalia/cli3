@@ -35,7 +35,10 @@ export default {
     forgotPassword: '¿Has olvidado tu contraseña?',
     keepMeLogged: 'Mantener sesión iniciada',
     login: 'Entrar',
-    footerLinks: ['faq', 'términos', 'condiciones']
+    footerLinks: ['faq', 'términos', 'condiciones'],
+    social: {
+      title: 'Haz login con'
+    }
   },
   password: {
     title: 'Restablecer contraseña',

@@ -27,14 +27,19 @@
     div.login-form__actions
       ods-checkbox(v-model="keepMeLogged") {{ $t('login.keepMeLogged') }}
       ods-button(type="primary" native-type="submit" @click.prevent="submitForm('loginForm')") {{ $t('login.login') }}
+    social-login(v-if="useSocialLogin")
 </template>
 
 <script>
 import FormStyles from '@/components/login/LoginFormStyles.vue'
+import SocialLogin from '@/components/login/SocialLogin.vue'
 import { mapActions } from 'vuex'
 export default {
   name: 'LoginForm',
   mixins: [ FormStyles ],
+  components: {
+    SocialLogin
+  },
   data () {
     return {
       loginForm: {
@@ -51,7 +56,8 @@ export default {
       },
       keepMeLogged: true,
       errors: false,
-      errorInfo: ''
+      errorInfo: '',
+      useSocialLogin: true
     }
   },
   methods: {
