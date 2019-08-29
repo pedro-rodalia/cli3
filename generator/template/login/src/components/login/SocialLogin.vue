@@ -1,6 +1,6 @@
 <template lang="pug">
   div.social-login
-    p.social-login__title \{{ $t('login.social.title') }}
+    p.social-login__title {{ $t('login.social.title') }}
     ul.social-login__options
       li.social-login__option(
         v-for="option in options"
