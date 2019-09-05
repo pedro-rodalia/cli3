@@ -4,7 +4,7 @@
     :rules='rules'
     ref='passwordForm'
     :hide-required-asterisk="true")
-    template(v-if="emailSent===0")
+    template(v-if="emailSent === 0")
       div
         h1.login-form__title {{ $t('password.title') }}
         p.ods-mb-5
@@ -17,7 +17,6 @@
             :closable="false")
         ods-form-item(:label="$t('password.email')" prop='email')
           ods-input(
-            :class="{error: errors}"
             type="text"
             v-model="passwordForm.email")
       div.ods-mt-8.login-form__actions
@@ -29,16 +28,16 @@
           @click.prevent="submitForm('passwordForm')") {{ $t('password.submitButton') }}
     div.password-messages(v-else)
       div
-        template(v-if="emailSent===1")
+        template(v-if="emailSent === 1")
           img(src="../../assets/images/login/email-sent.svg")
           p {{ $t('password.emailSubmitted') }}
-        template(v-else-if="emailSent===-1")
+        template(v-else-if="emailSent === -1")
           img(src="../../assets/images/login/email-error.svg")
           p {{ $t('password.emailError') }}
-        template(v-else-if="emailSent===-2")
+        template(v-else-if="emailSent === -2")
           img(src="../../assets/images/login/email-error.svg")
           p {{ $t('serverError') }}
-        p(v-if="userEmail") {{ userEmail }}
+        p(v-if="passwordForm.email") {{ passwordForm.email }}
       router-link(to="/login" tag="div")
         ods-button(type='primary') {{ $t('password.done') }}
 </template>
@@ -47,8 +46,13 @@
 import FormStyles from './LoginFormStyles.vue'
 import { mapActions } from 'vuex'
 export default {
+
   name: 'LoginPasswordForm',
+
   mixins: [ FormStyles ],
+
+  inject: [ 'emailReg' ],
+
   data () {
     return {
       passwordForm: {
@@ -56,60 +60,37 @@ export default {
       },
       rules: {
         email: [
-          { required: true, message: this.$t('password.rules.email'), trigger: 'submit' }
+          { required: true, message: this.$t('password.rules.email'), trigger: 'change' },
+          { validator: this.validateEmail, message: this.$t('password.rules.email'), trigger: 'change' }
         ]
       },
       errors: false,
-      emailSent: 0,
-      userEmail: ''
+      emailSent: 0
     }
   },
+
   methods: {
-    ...mapActions([
-      'login',
-      'loader'
-    ]),
-    submitForm (formName) {
-      let _this = this
-      const emailReg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-      this.$refs[formName].validate(async valid => {
-        if (valid & emailReg.test(this.passwordForm.email)) {
-          this.loader({loader: true, password: true})
-          const response = await this.login({email: this.passwordForm.email})
-          const isError = response instanceof Error
-          /********************************************
-          // Elimina este setTimeout! Es sólo para demo
-          ********************************************/
-          setTimeout(() => {
-            if (!isError) {
-              this.errors = false
-              this.$notify.closeAll()
-              this.emailSent = 1
-              this.loader({loader: false, password: true})
-              this.userEmail = response.data.email
-            } else {
-              this.errors = true
-              this.$notify.closeAll()
-              this.$notify({
-                title: 'Error',
-                message: _this.$t('password.error'),
-                type: 'error',
-                position: 'top-right',
-                duration: 5000
-              })
-              this.emailSent = -1
-              this.loader({loader: false, password: true})
-              this.userEmail = this.passwordForm.email
-            }
-          }, 2500)
-          /*   /setTimeout */
-        } else {
-          console.log('error submit!!')
-          this.errors = true
-          return false
-        }
-      })
+
+    ...mapActions([ 'resetPassword' ]),
+
+    validateEmail (_, message, callback) {
+      if (this.emailReg.test(this.passwordForm.email)) callback()
+      return callback(new Error(message))
+    },
+
+    async submitForm (formName) {
+      try {
+        const { email } = this.passwordForm
+        const valid = await this.$refs[formName].validate().catch(e => { throw new Error('Validation failed!') })
+        await this.resetPassword({ email })
+        this.emailSent = 1
+      } catch (error) {
+        console.error(error)
+        this.errors = true
+      }
     }
+
   }
+
 }
 </script>

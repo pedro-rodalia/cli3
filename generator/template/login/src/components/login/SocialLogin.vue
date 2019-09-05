@@ -1,6 +1,6 @@
 <template lang="pug">
   div.social-login
-    p.social-login__title {{ $t('login.social.title') }}
+    p.social-login__title {{ $t(`social.${action}`) }}
     ul.social-login__options
       li.social-login__option(
         v-for="option in options"
@@ -13,7 +13,17 @@
 
 <script>
 export default {
+
   name: 'SocialLogin',
+
+  props: {
+    action: {
+      type: String,
+      default: 'login',
+      validator: (val) => ['login', 'register'].includes(val)
+    }
+  },
+
   data () {
     return {
       options: [
@@ -35,6 +45,7 @@ export default {
       ]
     }
   }
+
 }
 </script>
 

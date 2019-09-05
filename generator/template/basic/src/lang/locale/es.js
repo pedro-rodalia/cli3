@@ -5,10 +5,8 @@ export default {
   label: 'Español',
   labelMobile: 'ES',
   serverError: 'Ha ocurrido un error inesperado en el servidor. Inténtalo de nuevo.',
-  
   breadcrumb: {
     home: 'Inicio',
-    <%_ if(options.addMenu) { _%>
     dashboard: 'Escritorio',
     tasks: 'Tareas',
     users: 'Usuarios',
@@ -17,28 +15,34 @@ export default {
     editProfile: 'Editar mi perfil',
     myUser: 'Mi usuario',
     editUser: 'Editar usuario'
-    <%_ } _%>
-  }
-  <%_ if(options.addLogin) { _%>,
+  },
+  social: {
+    login: 'Haz login con',
+    register: 'Regístrate con'
+  },
+  actions: {
+    register: 'Registrando usuario...',
+    confirm: 'Confirmando usuario...',
+    login: 'Iniciando sesión...',
+    reset: 'Enviando correo...',
+    generate: 'Actualizando la contraseña...'
+  },
   login: {
     title: 'Iniciar sesión',
-    user: 'Nombre de usuario',
+    username: 'Nombre de usuario',
     password: 'Contraseña',
     submitButton: 'Enviar',
     rules: {
-      user: 'Introduzca el usuario',
+      username: 'Introduzca el usuario',
       password: 'Introduzca la contaseña'
     },
-    logging: 'Iniciando sesión...',
     loginErrorTitle: 'Error de validación.',
     loginError: `La combinación usuario/contraseña no es valida.`,
     forgotPassword: '¿Has olvidado tu contraseña?',
+    register: 'Crear cuenta',
     keepMeLogged: 'Mantener sesión iniciada',
     login: 'Entrar',
-    footerLinks: ['faq', 'términos', 'condiciones'],
-    social: {
-      title: 'Haz login con'
-    }
+    footerLinks: ['faq', 'términos', 'condiciones']
   },
   password: {
     title: 'Restablecer contraseña',
@@ -54,6 +58,43 @@ export default {
     emailSubmitted: 'Hemos enviado un correo electrónico con instrucciones para poder restablecer su contraseña a:',
     done: 'Finalizar',
     emailError: 'No existe ninguna cuenta vinculada a este correo electrónico: '
+  },
+  passwordReset: {
+    title: 'Nueva contraseña',
+    message: 'Configura tu nueva contraseña',
+    password: 'Nueva Contraseña',
+    confirmPassword: 'Confirma tu contraseña',
+    submitButton: 'Submit',
+    goBack: 'Volver',
+    sending: 'Enviando...',
+    rules: {
+      password: 'Introduzca una contraseña válida',
+      confirmPassword: 'Confirme la contraseña',
+      passwordMatch: 'Las contraseñas no coinciden'
+    },
+    done: 'Finalizar',
+    error: 'Ha ocurrido un error al intentar cambiar la contraseña'
+  },
+  register: {
+    title: 'Registrarse',
+    username: 'Nombre de usuario',
+    fullName: 'Nombre completo',
+    email: 'Email',
+    password: 'Contraseña',
+    confirmPassword: 'Confirmar contraseña',
+    submitButton: 'Enviar',
+    goBack: 'Volver',
+    rules: {
+      username: 'Introduzca un nombre de usuario',
+      fullName: 'Introduzca su nombre completo',
+      email: 'Introduzca su email',
+      password: 'Introduzca una contaseña',
+      confirmPassword: 'Debe confirmar la contraseña',
+      passwordMatch: 'Las contraseñas no coinciden'
+    },
+    registerErrorTitle: 'Error de validación.',
+    registerError: 'Revise los campos',
+    emailSubmitted: 'Hemos enviado un email de confirmación a la dirección de correo:',
+    footerLinks: ['faq', 'terms', 'conditions']
   }
-  <%_ } _%> 
 }

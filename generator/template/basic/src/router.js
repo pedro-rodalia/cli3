@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-<%_ if(options.addMenu) { _%>
-<%_ } _%>
-<%_ if(options.addLogin) { _%>
 import Login from '@/views/login/Login'
 import LoginForm from '@/components/login/LoginForm'
 import LoginPasswordForm from '@/components/login/LoginPasswordForm'
-<%_ } _%>
+import LoginPasswordResetForm from '@/components/login/LoginPasswordResetForm'
+import LoginRegister from '@/components/login/LoginRegister'
 Vue.use(Router)
 
 /* function to add breadcrumbs to a view */
@@ -27,7 +25,6 @@ const setBreadcrumbParams = to => {
 
 const route = new Router({
   routes: [
-    <%_ if(options.addLogin) { _%>
     {
       path: '/login',
       name: 'Login',
@@ -43,17 +40,24 @@ const route = new Router({
           path: 'password',
           name: 'password-form',
           component: LoginPasswordForm
+        },
+        {
+          path: 'register',
+          name: 'register',
+          component: LoginRegister
+        },
+        {
+          path: 'password-reset',
+          name: 'password-reset-form',
+          component: LoginPasswordResetForm
         }
       ]
-    },<%_ } _%>
-    {
+    }, {
       path: '/',
       name: 'Home',
       component: Home,
       meta: {
-        <%_ if(options.addLogin) { _%>
         private: true,
-        <%_ } _%>
         breadcrumbTextKey: 'home'
       }
     }
@@ -61,19 +65,15 @@ const route = new Router({
 })
 
 route.beforeEach((to, from, next) => {
-  <%_ if(options.addLogin) { _%>
   if (to.matched.some(record => record.meta.private)) {
-    if (!sessionStorage.getItem('sessionToken')) {
-      next({name: 'Login'})
+    if (false) { // CHANGEIT: Condition for unauthorized user
+      next({ name: 'Login' })
     } else {
       next()
     }
   } else {
     next()
   }
-  <%_ }  else { _%>
-  next()
-  <%_ } _%>
   setBreadcrumbParams(to)
 })
 

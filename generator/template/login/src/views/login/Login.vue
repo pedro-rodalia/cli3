@@ -8,12 +8,12 @@
       div.login__lang-selector
         lang-selector(
           cssClass="login__select--white"
-          :mobile="mobile")
+          :mobile="isMobile")
     main.login__main
       router-view(
-        v-loading="loading && !mobile"
-        v-loading.fullscreen.lock="loading && mobile"
-        :loading-text="password ? $t('password.sending') : $t('login.logging')")
+        v-loading="loader.active && !isMobile"
+        v-loading.fullscreen.lock="loader.active && isMobile"
+        :loading-text="$t(`actions.${loader.action}`)")
     login-footer
 </template>
 
@@ -23,18 +23,24 @@ import { mapGetters } from 'vuex'
 import LangSelector from '@/components/shared/LangSelector'
 
 export default {
+
   name: 'Login',
+
   components: {
     LoginFooter,
     LangSelector
   },
+
+  provide: {
+    useSocialLogin: true,
+    emailReg: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+    passwordReg: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/ // https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+  },
+
   computed: {
-    ...mapGetters({
-      loading: 'getLoaderState',
-      mobile: 'isMobile',
-      password: 'getIsPasswordForm'
-    })
+    ...mapGetters([ 'loader', 'isMobile' ])
   }
+
 }
 
 </script>

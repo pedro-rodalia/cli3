@@ -31,6 +31,12 @@
     }
   }
 
+  .login-form__router {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: rem(16);
+  }
+
   .ods-form, .ods-input__inner {
     background-color: $--color-white;
   }
@@ -57,7 +63,7 @@
   }
 
   .login-form__errors {
-    min-height: 35px;
+    min-height: 40px;
   }
 
   /deep/ .ods-form-item__label {

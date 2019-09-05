@@ -9,21 +9,24 @@
       .login-form__errors.ods-mb-5
         ods-alert(
           v-show="errors"
-          :title="errorInfo || $t('login.loginError')"
+          :title="$t('login.loginError')"
           type="error"
           :closable="false")
-      ods-form-item(:label="$t('login.user')" prop='user')
+      ods-form-item(:label="$t('login.username')" prop='username')
         ods-input(
-          :class="{error: errors}"
+          :class="{ error: errors }"
           type="text"
-          v-model="loginForm.user")
+          v-model="loginForm.username")
       ods-form-item.ods-mb-3(:label="$t('login.password')" prop="password")
         ods-input(
-          :class="{error: errors}"
+          :class="{ error: errors }"
           type="password"
           v-model="loginForm.password")
-      router-link(to="/login/password" tag="div")
-        ods-button.ods-p-0(type="text") {{ $t('login.forgotPassword') }}
+      div.login-form__router
+        router-link(to="/login/password" tag="div")
+          ods-button.ods-p-0(type="text") {{ $t('login.forgotPassword') }}
+        router-link(to="/login/register" tag="div")
+          ods-button.ods-p-0(type="text") {{ $t('login.register') }}
     div.login-form__actions
       ods-checkbox(v-model="keepMeLogged") {{ $t('login.keepMeLogged') }}
       ods-button(type="primary" native-type="submit" @click.prevent="submitForm('loginForm')") {{ $t('login.login') }}
@@ -35,80 +38,64 @@ import FormStyles from '@/components/login/LoginFormStyles.vue'
 import SocialLogin from '@/components/login/SocialLogin.vue'
 import { mapActions } from 'vuex'
 export default {
+
   name: 'LoginForm',
+
   mixins: [ FormStyles ],
+
+  inject: [ 'passwordReg', 'useSocialLogin' ],
+
   components: {
     SocialLogin
   },
+
   data () {
     return {
       loginForm: {
-        user: 'admin',
-        password: 'admin'
+        username: '',
+        password: ''
       },
       rules: {
-        user: [
-          { required: true, message: this.$t('login.rules.user'), trigger: 'submit' }
-        ],
-        password: [
-          { required: true, message: this.$t('login.rules.password'), trigger: 'submit' }
-        ]
+        username: [{ required: true, message: this.$t('login.rules.username'), trigger: 'submit' }],
+        password: [{ required: true, message: this.$t('login.rules.password'), trigger: 'submit' }]
       },
       keepMeLogged: true,
-      errors: false,
-      errorInfo: '',
-      useSocialLogin: true
+      errors: false
     }
   },
+
   methods: {
-    ...mapActions([
-      'login',
-      'loader'
-    ]),
-    submitForm (formName) {
-      let _this = this
-      this.$refs[formName].validate(async valid => {
-        if (valid) {
-          this.loader({loader: true})
-          const data = {
-            username: this.loginForm.user,
-            password: this.loginForm.password
-          }
-          const response = await this.login(data)
-          const isError = response instanceof Error
-          /********************************************
-          // Elimina este setTimeout! Es sólo para demo
-          ********************************************/
-          setTimeout(() => {
-            if (!isError) {
-              this.$notify.closeAll()
-              sessionStorage.sessionToken = response.data.token
-              sessionStorage.userId = response.data.userId
-              this.loader({loader: false})
-              this.$router.push({ name: 'Home' })
-            } else {
-              this.errorInfo = `${this.$t('login.loginError')}`
-              this.$notify.closeAll()
-              this.$notify({
-                title: _this.$t('login.loginErrorTitle'),
-                message: this.errorInfo,
-                type: 'error',
-                position: 'top-right',
-                duration: 5000
-              })
-              this.loader({loader: false})
-              this.errors = true
-            }
-          }, 2500)
-          /*   /setTimeout */
-        } else {
-          console.log('error submit!!')
-          this.errors = true
-          return false
-        }
-      })
+
+    ...mapActions([ 'login', 'confirmRegister' ]),
+
+    async submitForm (formName) {
+      try {
+        await this.$refs[formName].validate().catch(e => { throw new Error('Validation failed!') })
+        await this.login({ ...this.loginForm, keepMeLogged: this.keepMeLogged })
+        this.$router.push({ name: 'Home' })
+      } catch (error) {
+        console.error(error)
+        this.errors = true
+      }
+    },
+
+    async submitConfirm () {
+      try {
+        const token = this.$route.query.token
+        if (!token) return
+        await this.confirmRegister({ token })
+      } catch (e) {
+        console.error(e)
+        // TODO: Notify failure on registry confirmation
+      }
     }
+
+  },
+
+  created () {
+    this.submitConfirm()
   }
+
 }
 
 </script>

@@ -3,9 +3,7 @@
     template(v-if="!this.$route.path.includes('login')")
       header-content(@hasTopBar="handleHeigth")
       div.flex-container
-        <%_ if(options.addMenu) { _%>
         nav-content
-        <%_ } _%>
         ods-main
           ods-scrollbar(:wrapClass="wrapClass")
             router-view
@@ -15,32 +13,41 @@
 </template>
 
 <script>
-import HeaderContent from "@/components/header/HeaderContent"
-<%_ if(options.addMenu) { _%>
-import NavContent from "@/components/nav/NavContent"
-<%_ } _%>
-
+import HeaderContent from '@/components/header/HeaderContent'
+import NavContent from '@/components/nav/NavContent'
+import { mapActions } from 'vuex'
 export default {
-  name: "App",
+
+  name: 'App',
+
   components: {
-    HeaderContent<%_ if(options.addMenu) { _%>,
-    NavContent<%_ } _%>
+    HeaderContent,
+    NavContent
   },
 
-  data() {
+  data () {
     return {
-      wrapClass: ""
-    };
+      wrapClass: ''
+    }
   },
 
   methods: {
-    handleHeigth(val) {
+
+    ...mapActions([ 'restoreSession' ]),
+
+    handleHeigth (val) {
       this.wrapClass = val
-        ? "ods-scrollbar--main-content has-top-bar"
-        : "ods-scrollbar--main-content";
+        ? 'ods-scrollbar--main-content has-top-bar'
+        : 'ods-scrollbar--main-content'
     }
+
+  },
+
+  created () {
+    this.restoreSession().then((result) => result && this.$router.push({ name: 'Home' }))
   }
-};
+
+}
 </script>
 
 <style lang="scss">
